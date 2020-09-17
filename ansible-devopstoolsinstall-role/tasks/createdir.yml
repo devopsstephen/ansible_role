@@ -1,0 +1,30 @@
+- stat:
+      path: "{{ java_home_parent_directory }}"
+  register: result
+- debug:
+      var: result
+
+- name: create directory
+  file:
+      path: "{{ java_home_parent_directory }}"
+      state: directory
+      owner: "{{ admin_user }}"
+      group: "{{ admin_user }}"
+      mode: '0766'
+      recurse: yes
+  when: result.stat.exists == False
+- stat:
+      path: "{{ maven_home_parent_directory }}"
+  register: output
+- debug:
+      var: output
+
+- name: create directory
+  file:
+      path: "{{ maven_home_parent_directory }}"
+      state: directory
+      owner: "{{ admin_user }}"
+      group: "{{ admin_user }}"
+      mode: '0766'
+      recurse: yes
+  when: output.stat.exists == False

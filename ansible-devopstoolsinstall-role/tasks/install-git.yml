@@ -1,0 +1,12 @@
+---
+- name: install git
+  yum:
+    name: "{{ repo_name }}"
+    state: present
+  when: ansible_os_family == 'RedHat'
+
+- name: install git
+  apt:
+    name: "{{ repo_name }}"
+    state: present
+  when: ansible_os_family == 'Ubuntu'

@@ -1,0 +1,14 @@
+---
+- name: Download and Unarchive maven
+  unarchive:
+        src: "https://mirrors.estointernet.in/apache/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz"
+        dest: "{{ maven_home_parent_directory }}"
+        remote_src: yes
+
+- name: set up env variables for maven
+  template:
+     src: maven.j2
+     dest: /etc/profile.d/maven.sh
+- name: Restart maven evn file
+  shell: source /etc/profile.d/maven.sh
+

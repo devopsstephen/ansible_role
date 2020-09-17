@@ -1,0 +1,10 @@
+---
+- name: Ensure pip is installed
+  package: 
+     name: python3-pip 
+     update_cache: yes
+     state: latest
+- name: pip install awscli
+  pip: 
+   name: awscli 
+   state: latest

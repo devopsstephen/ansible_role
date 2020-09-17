@@ -1,0 +1,9 @@
+---
+# tasks file for FHIR
+- import_tasks: create-user.yml
+- import_tasks: createdir.yml
+- import_tasks: install-git.yml
+- import_tasks: install-java.yml
+- import_tasks: install-maven.yml
+- import_tasks: install-docker.yml
+- import_tasks: install-awscli.yml

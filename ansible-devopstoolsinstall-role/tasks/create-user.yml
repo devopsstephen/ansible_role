@@ -1,0 +1,36 @@
+- name: create group jenkins user
+  group:
+      name: "{{ sudo_admin_user }}"
+      state: present
+
+- name: create jenkins user
+  user:
+    name: "{{ admin_user }}"
+    shell: /bin/bash
+    password: "{{ admin_password | password_hash('sha512') }}"
+    state: present
+
+
+- name: enable sudo admin use to use sudo
+  lineinfile:
+    path: /etc/sudoers
+    state: present
+    line: "{{ sudo_admin_user }} ALL=(ALL) NOPASSWD: ALL"
+    validate: /usr/sbin/visudo -cf %s
+- name: enable sudo admin use to use sudo
+  lineinfile:
+    path: /etc/sudoers
+    state: present
+    line: "{{ admin_user }} ALL=(ALL) NOPASSWD: ALL"
+    validate: /usr/sbin/visudo -cf %s
+
+
+- name: enable password login for all users
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    state: present
+    regexp: "^PasswordAuthentication no"
+    line: "PasswordAuthentication yes"
+  notify:
+    - "restart sshd.service"
+

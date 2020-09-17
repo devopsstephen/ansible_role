@@ -1,0 +1,8 @@
+---
+- name: enter host details
+  hosts: all
+  gather_facts: true
+  ignore_errors: yes
+  become: yes
+  roles:
+  - ansible-devopstoolsinstall-role

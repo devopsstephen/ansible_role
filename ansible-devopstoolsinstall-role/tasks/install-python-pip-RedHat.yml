@@ -1,0 +1,4 @@
+---
+- name: Install python-pip via yum.
+  yum: "name={{ awscli_pip_package }} state=installed"
+  become: yes

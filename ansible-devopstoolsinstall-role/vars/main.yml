@@ -1,0 +1,15 @@
+---
+# vars file for FHIR
+
+admin_user: jenkins
+sudo_admin_user: jenkins
+admin_password: strongpassword
+sudo_admin_password: strongerpassword
+repo_name: git
+maven_home_parent_directory: /app/maven
+java_home_parent_directory: /app/java
+java_version: java-1.8.0-openjdk
+java_file: jdk-8u131-linux-x64.tar.gz
+
+awscli_pip_package: python-pip
+awscli_version: 1.11.73
